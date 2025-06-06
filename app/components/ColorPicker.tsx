@@ -64,7 +64,7 @@ export default function ColorPicker({
               <input
                 className={inputClasses}
                 value={round(lightness)}
-                type="number"
+                type="range"
                 min="0"
                 max="100"
                 onChange={handleLightnessChange}

@@ -26,23 +26,31 @@ const tweakInputs = [
     name: `h`,
     title: `Hue`,
     value: DEFAULT_PALETTE_CONFIG.h,
+    min: -100,
+    max: 100,
   },
   {
     name: `s`,
     title: `Saturation`,
     value: DEFAULT_PALETTE_CONFIG.s,
+    min: -100,
+    max: 100,
   },
   {
     name: `lMax`,
     title: (useLightness: boolean) =>
       useLightness ? `Lightness Maximum` : `Luminance Maximum`,
     value: DEFAULT_PALETTE_CONFIG.lMax,
+    min: 0,
+    max: 100,
   },
   {
     name: `lMin`,
     title: (useLightness: boolean) =>
       useLightness ? `Lightness Minimum` : `Luminance Minimum`,
     value: DEFAULT_PALETTE_CONFIG.lMin,
+    min: 0,
+    max: 100,
   },
 ] as const;
 
@@ -337,7 +345,9 @@ export default function Palette(props: PaletteProps) {
               className={inputClasses}
               name={input.name}
               value={paletteState[input.name] ?? input.value}
-              type="number"
+              type="range"
+              min={input.min}
+              max={input.max}
               style={ringStyle}
               required
             />
