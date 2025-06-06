@@ -263,7 +263,9 @@ export default function Palette(props: PaletteProps) {
         {paletteInputs.map((input) => (
           <div
             key={input.name}
-            className="flex flex-col gap-1 col-span-2 focus-within:text-gray-900"
+            className={`flex flex-col gap-1 col-span-2 focus-within:text-gray-900 ${
+              input.name === "name" ? "sm:col-span-1" : "sm:col-span-2"
+            }`}
           >
             <label className={labelClasses} htmlFor={input.name}>
               {input.title}
@@ -342,7 +344,7 @@ export default function Palette(props: PaletteProps) {
           />
         </div>
       </div>
-      <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
+      <div className="grid grid-cols-6 gap-2">
         {tweakInputs.map((input) => (
           <div
             key={input.name}
@@ -367,6 +369,8 @@ export default function Palette(props: PaletteProps) {
             />
           </div>
         ))}
+      </div>
+      <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
         <div className="col-span-4 sm:col-span-1 p-2 flex justify-center items-center gap-1 border border-dashed border-gray-200">
           <span
             className={[
