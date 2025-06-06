@@ -23,16 +23,30 @@ import StopSelect from "./StopSelect";
 
 const tweakInputs = [
   {
-    name: `h`,
-    title: `Hue`,
-    value: DEFAULT_PALETTE_CONFIG.h,
+    name: `hBelow`,
+    title: `Hue Below`,
+    value: DEFAULT_PALETTE_CONFIG.hBelow,
     min: -100,
     max: 100,
   },
   {
-    name: `s`,
-    title: `Saturation`,
-    value: DEFAULT_PALETTE_CONFIG.s,
+    name: `hAbove`,
+    title: `Hue Above`,
+    value: DEFAULT_PALETTE_CONFIG.hAbove,
+    min: -100,
+    max: 100,
+  },
+  {
+    name: `sBelow`,
+    title: `Saturation Below`,
+    value: DEFAULT_PALETTE_CONFIG.sBelow,
+    min: -100,
+    max: 100,
+  },
+  {
+    name: `sAbove`,
+    title: `Saturation Above`,
+    value: DEFAULT_PALETTE_CONFIG.sAbove,
     min: -100,
     max: 100,
   },

@@ -17,8 +17,10 @@ export interface PaletteConfig {
   valueStop: number;
   swatches: SwatchValue[];
   useLightness: boolean;
-  h: number;
-  s: number;
+  hBelow: number;
+  hAbove: number;
+  sBelow: number;
+  sAbove: number;
   lMin: number;
   lMax: number;
   mode: Mode;

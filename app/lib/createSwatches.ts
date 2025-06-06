@@ -20,14 +20,16 @@ export function createSwatches(palette: PaletteConfig) {
   // Tweaks may be passed in, otherwise use defaults
   const useLightness =
     palette.useLightness ?? DEFAULT_PALETTE_CONFIG.useLightness;
-  const h = palette.h ?? DEFAULT_PALETTE_CONFIG.h;
-  const s = palette.s ?? DEFAULT_PALETTE_CONFIG.s;
+  const hBelow = palette.hBelow ?? DEFAULT_PALETTE_CONFIG.hBelow;
+  const hAbove = palette.hAbove ?? DEFAULT_PALETTE_CONFIG.hAbove;
+  const sBelow = palette.sBelow ?? DEFAULT_PALETTE_CONFIG.sBelow;
+  const sAbove = palette.sAbove ?? DEFAULT_PALETTE_CONFIG.sAbove;
   const lMin = palette.lMin ?? DEFAULT_PALETTE_CONFIG.lMin;
   const lMax = palette.lMax ?? DEFAULT_PALETTE_CONFIG.lMax;
 
   // Create hue and saturation scales based on tweaks
-  const hueScale = createHueScale(h, valueStop);
-  const saturationScale = createSaturationScale(s, valueStop);
+  const hueScale = createHueScale(hBelow, hAbove, valueStop);
+  const saturationScale = createSaturationScale(sBelow, sAbove, valueStop);
 
   // Get the base hex's H/S/L values
   const { h: valueH, s: valueS, l: valueL } = hexToHSL(value);

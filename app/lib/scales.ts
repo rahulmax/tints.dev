@@ -1,7 +1,8 @@
 import { DEFAULT_STOP, DEFAULT_STOPS } from "./constants";
 
 export function createSaturationScale(
-  tweak: number = 0,
+  tweakBelow: number = 0,
+  tweakAbove: number = 0,
   stop: number = DEFAULT_STOP,
 ) {
   const stops = DEFAULT_STOPS;
@@ -12,7 +13,10 @@ export function createSaturationScale(
   }
 
   return stops.map((stop) => {
-    const diff = Math.abs(stops.indexOf(stop) - index);
+    const stopIndex = stops.indexOf(stop);
+    const diff = Math.abs(stopIndex - index);
+    const isBelow = stopIndex < index;
+    const tweak = isBelow ? tweakBelow : tweakAbove;
     const tweakValue = tweak
       ? Math.round((diff + 1) * tweak * (1 + diff / 10))
       : 0;
@@ -25,7 +29,11 @@ export function createSaturationScale(
   });
 }
 
-export function createHueScale(tweak: number = 0, stop: number = DEFAULT_STOP) {
+export function createHueScale(
+  tweakBelow: number = 0,
+  tweakAbove: number = 0,
+  stop: number = DEFAULT_STOP,
+) {
   const stops = DEFAULT_STOPS;
   const index = stops.indexOf(stop);
 
@@ -34,7 +42,10 @@ export function createHueScale(tweak: number = 0, stop: number = DEFAULT_STOP) {
   }
 
   return stops.map((stop) => {
-    const diff = Math.abs(stops.indexOf(stop) - index);
+    const stopIndex = stops.indexOf(stop);
+    const diff = Math.abs(stopIndex - index);
+    const isBelow = stopIndex < index;
+    const tweak = isBelow ? tweakBelow : tweakAbove;
     const tweakValue = tweak ? diff * tweak : 0;
 
     return { stop, tweak: tweakValue };
