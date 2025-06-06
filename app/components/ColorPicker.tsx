@@ -40,9 +40,15 @@ export default function ColorPicker({
     <Popover className="relative">
       <PopoverButton
         style={ringStyle}
-        className="w-full p-2 border border-gray-200 bg-gray-50 focus:outline-hidden focus:ring-3 focus:bg-gray-100 focus:border-gray-300 text-gray-500 focus:text-gray-900"
+        className="w-full p-2 border border-gray-200 bg-gray-50 focus:outline-hidden focus:ring-3 focus:bg-gray-100 focus:border-gray-300 text-gray-500 focus:text-gray-900 relative"
       >
-        <SwatchIcon className="w-6 h-auto" />
+        <div className="flex items-center gap-2">
+          <div 
+            className="w-6 h-6 rounded-full border border-gray-200" 
+            style={{ backgroundColor: value.startsWith(`#`) ? value : `#${value}` }}
+          />
+          <SwatchIcon className="w-6 h-auto" />
+        </div>
         <span className="sr-only">Open Color Picker</span>
       </PopoverButton>
 
